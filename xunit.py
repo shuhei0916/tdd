@@ -1,18 +1,25 @@
-# メソッドが走ったかどうかをテストするクラス
-class WasRun:
+class TestCase:
     def __init__(self, name):
-        self.wasRun = None
         self.name = name
     def run(self):
-        # self.testMethod() # runメソッドを呼べば、testMethodが間接的に呼び出される
         method = getattr(self, self.name)
-        print(method)
         method()
+
+
+# メソッドが走ったかどうかをテストするクラス
+class WasRun(TestCase):
+    def __init__(self, name):
+        self.wasRun = None
+        super().__init__(name)
     def testMethod(self):
         self.wasRun = 1
 
 
-test = WasRun("testMethod") # テストケースにフラグを用意
-print(test.wasRun) # フラグがfalseであることを確認
-test.run() 
-print(test.wasRun) # フラグがtrueになったことを確認
+class TestCaseTest(TestCase):
+    def testRunning(self):
+        test = WasRun("testMethod") # テストケースにフラグを用意
+        assert(not test.wasRun) # フラグがfalseであることを確認
+        test.run() 
+        assert(test.wasRun) # フラグがtrueになったことを確認
+
+TestCaseTest("testRunning").run()
