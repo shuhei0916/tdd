@@ -37,6 +37,14 @@ class FizzBuzzTest {
 		}
 		
 		@Nested
+		class _15の倍数の時は数の代わりにFizzBuzzと変換する {
+			@Test
+			void _15を渡すと文字列FizzBuzzを返す() throws Exception {
+				assertEquals("FizzBuzz", fizzbuzz.convert(15));
+			}
+		}
+		
+		@Nested
 		class その他の数の時はそのまま文字列に変換する {
 			@Test
 			void _1を渡すと文字列1を返す() throws Exception {
