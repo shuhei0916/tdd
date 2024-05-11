@@ -3,8 +3,11 @@ package fizzbuzz;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("FizzBuzz数列と変換規則を扱うFizzBuzzクラス")
 class FizzBuzzTest {
 
 	
@@ -14,27 +17,32 @@ class FizzBuzzTest {
 		fizzbuzz = new FizzBuzz();
 	}
 	
-	@Test
-	void _1を渡すと文字列1を返す() throws Exception {
-		assertEquals("1", fizzbuzz.convert(1));
-		
-	}
 	
-	// 1 assertion per test principle
-	@Test
-	void _2を渡すと文字列2を返す() throws Exception {
-		assertEquals("2", fizzbuzz.convert(2));
+	@Nested
+	class convertメソッドは数を文字列に変換する {
+		@Nested
+		class _3の倍数の時は数の代わりにFizzと変換する{
+			@Test
+			void _3を渡すと文字列Fizzを返す() throws Exception {
+				assertEquals("Fizz", fizzbuzz.convert(3));
+			}
+		}
 		
-	}
-	@Test
-	void _3を渡すと文字列Fizzを返す() throws Exception {
-		assertEquals("Fizz", fizzbuzz.convert(3));
+		@Nested
+		class _5の倍数の時は数の代わりにBuzzと変換する {
+			@Test
+			void _5を渡すと文字列Buzzを返す() throws Exception {
+				assertEquals("Buzz", fizzbuzz.convert(5));
+			}
+		}
 		
+		@Nested
+		class その他の数の時はそのまま文字列に変換する {
+			@Test
+			void _1を渡すと文字列1を返す() throws Exception {
+				assertEquals("1", fizzbuzz.convert(1));
+			}
+			
+		}
 	}
-	@Test
-	void _5を渡すと文字列Buzzを返す() throws Exception {
-		assertEquals("Buzz", fizzbuzz.convert(5));
-		
-	}
-
 }
