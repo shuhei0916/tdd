@@ -17,7 +17,5 @@ public class FibonacciTest {
 		int cases[][] = {{0, 0}, {1, 1}, {2, 1}, {3, 2}};
 		for (int i = 0; i < cases.length; i++)
 			assertEquals(cases[i][1], fib(cases[i][0])); // 第1引数が期待値、第2引数が実測値
-//		assertEquals(1, fib(1));
-//		assertEquals()
 	}
 }
