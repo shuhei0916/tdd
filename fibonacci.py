@@ -1,2 +1,2 @@
 def fib(n):
-    print(n)
+    return 0
